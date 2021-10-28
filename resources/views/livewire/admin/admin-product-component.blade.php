@@ -14,10 +14,10 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-6">
-                                <h5>All categories</h5>
+                                <h5>All products</h5>
                             </div>
                             <div class="col-md-6">
-                                <a href="{{ route('admin.addcategory') }}" class="btn btn-success pull-right">
+                                <a href="{{ route('admin.addproduct') }}" class="btn btn-success pull-right">
                                     Add New
                                 </a>
                             </div>
@@ -34,22 +34,30 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Category Name</th>
-                                <th>Slug</th>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Stock</th>
+                                <th>Price</th>
+                                <th>Category</th>
+                                <th>Date</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($categories as $category)
+                            @foreach ($products as $product)
                             <tr>
-                                <td>{{ $category->id }}</td>
-                                <td>{{ $category->name }}</td>
-                                <td>{{ $category->slug }}</td>
+                                <td>{{ $product->id }}</td>
+                                <td><img src="{{ asset('assets/images/products') }}/{{ $product->image }}" width="60"></td>
+                                <td>{{ $product->name }}</td>
+                                <td>{{ $product->stock_status }}</td>
+                                <td>{{ $product->regular_price }}</td>
+                                <td>{{ $product->category->name }}</td>
+                                <td>{{ $product->created_at }}</td>
                                 <td>
-                                    <a href="{{ route('admin.editcategory', ['category_slug' => $category->slug]) }}">
+                                    <a href="{{ route('admin.editcategory', ['category_slug' => $product->slug]) }}">
                                         <i class="fa fa-edit fa-2x"></i>
                                     </a>
-                                    <a href="#" wire:click.prevent = "deleteCategory({{ $category->id }})" style="color:rgb(243, 24, 24); margin-left:10px;">
+                                    <a href="#" wire:click.prevent = "deleteCategory({{ $product->id }})" style="color:rgb(243, 24, 24); margin-left:10px;">
                                         <i class="fa fa-times fa-2x"></i>
                                     </a>
                                 </td>
@@ -57,7 +65,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $categories->links() }}
+                    {{ $products->links() }}
                 </div>
             </div>
         </div>
