@@ -174,7 +174,7 @@
 									<a href="{{ route('admin.products') }}" class="link-term mercado-item-title">Product</a>
 								</li>
 								<li class="menu-item">
-									<a href="/cart" class="link-term mercado-item-title">Cart</a>
+									<a href="{{ route('admin.homeslider') }}" class="link-term mercado-item-title">Home Slider</a>
 								</li>
 								<li class="menu-item">
 									<a href="/checkout" class="link-term mercado-item-title">Checkout</a>
